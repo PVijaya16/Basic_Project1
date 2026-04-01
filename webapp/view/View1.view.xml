@@ -1,0 +1,161 @@
+<mvc:View
+    controllerName="project9.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:f="sap.ui.layout.form">
+
+    <Page id="page">
+
+        <!-- HEADER -->
+        <subHeader>
+            <Bar id="headerBar">
+
+                <contentLeft>
+                    <HBox>
+                        <Button icon="sap-icon://nav-back" press="onBackPress"/>
+                        <Button text="Home" icon="sap-icon://home" press="onHomePress"/>
+                    </HBox>
+                </contentLeft>
+
+                <contentMiddle>
+                    <Title text="Application Form" />
+                </contentMiddle>
+
+                <contentRight>
+                    <Button
+                        icon="sap-icon://navigation-right-arrow"
+                        press="onShowImage"/>
+                </contentRight>
+
+            </Bar>
+        </subHeader>
+
+        <!-- CONTENT -->
+        <content>
+
+            <FlexBox
+                id="successContainer"
+                visible="false"
+                height="100%"
+                width="100%"
+                alignItems="Center"
+                justifyContent="Center"
+                direction="Column">
+
+                <!-- SUCCESS -->
+                <VBox id="successBox" alignItems="Center">
+                    <Text 
+                        text="✅ Successfully Submitted!" 
+                        class="sapUiMediumMarginBottom"/>
+                    <Button 
+                        text="Resubmit" 
+                        type="Emphasized" 
+                        press="onResubmit"/>
+                </VBox>
+
+                <!-- IMAGE -->
+                <VBox id="imageContainer" visible="false" alignItems="Center" width="100%">
+
+                    <Image 
+                        id="myImage" 
+                        width="100%" 
+                        height="100%"
+                        class="customImage sapUiMediumMarginBottom"/>
+
+                    <HBox width="50%" justifyContent="Start" class="sapUiMediumMarginTop">
+                        <Button
+                            text="Previous"
+                            icon="sap-icon://nav-back"
+                            press="onPreviousPress"/>
+                    </HBox>
+
+                </VBox>
+
+                <!-- INVOICE -->
+                <VBox id="invoiceContainer" visible="false" width="100%" height="100%">
+
+                    <Table
+                        width="100%"
+                        inset="false"
+                        growing="true"
+                        items="{invoiceModel>/Invoices}">
+
+                        <columns>
+                            <Column width="20%"><Text text="Product"/></Column>
+                            <Column width="15%"><Text text="Quantity"/></Column>
+                            <Column width="15%"><Text text="Price"/></Column>
+                            <Column width="20%"><Text text="Shipper"/></Column>
+                            <Column width="20%"><Text text="Date"/></Column>
+                            <Column width="10%"><Text text="Status"/></Column>
+                        </columns>
+
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <Text text="{invoiceModel>ProductName}"/>
+                                    <Text text="{invoiceModel>Quantity}"/>
+                                    <Text text="{invoiceModel>ExtendedPrice}"/>
+                                    <Text text="{invoiceModel>ShipperName}"/>
+                                    <Text text="{invoiceModel>ShippedDate}"/>
+                                    <Text text="{invoiceModel>Status}"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+
+                    </Table>
+
+                </VBox>
+
+            </FlexBox>
+
+            <!-- FORM -->
+            <VBox id="formContainer" class="sapUiSmallMargin">
+
+                <f:SimpleForm
+                    title="Student Details"
+                    editable="true"
+                    layout="ResponsiveGridLayout"
+                    labelSpanL="4"
+                    labelSpanM="4"
+                    columnsL="2"
+                    columnsM="2">
+
+                    <Label text="Name"/>
+                    <Input value="{/user/name}" />
+
+                    <Label text="Email"/>
+                    <Input value="{/user/email}" />
+
+                    <Label text="City"/>
+                    <Input value="{/user/city}" />
+
+                    <Label text="Mobile"/>
+                    <Input value="{/user/mobile}" />
+
+                    <Label text="College"/>
+                    <Input value="{/user/college}" />
+
+                    <Label text="Branch"/>
+                    <Input value="{/user/branch}" />
+
+                    <Label text="Skill"/>
+                    <Input value="{path:'/user/skill', formatter: '.formatSkills'}"/>
+
+                </f:SimpleForm>
+
+            </VBox>
+
+        </content>
+
+        <!-- FOOTER -->
+        <footer>
+            <Toolbar id="footerBar">
+                <ToolbarSpacer/>
+
+                <Button text="Submit" type="Emphasized" press="onSubmit"/>
+                <Button text="Cancel" type="Reject" press="onCancel"/>
+            </Toolbar>
+        </footer>
+
+    </Page>
+</mvc:View>

@@ -1,0 +1,22 @@
+{
+  "user": {
+    "name": "vijaya",
+    "email": "vijayareddy319@gmail.com",
+    "city": "tirupati",
+    "mobile": "9959982928",
+    "college": "sret",
+    "branch": "CSE",
+    "skill": [{ "name": "Python" },
+    { "name": "Java" }]
+  },
+  "items": [
+    {
+      "title": "Item 1",
+      "desc": "Description 1"
+    },
+    {
+      "title": "Item 2",
+      "desc": "Description 2"
+    }
+  ]
+}

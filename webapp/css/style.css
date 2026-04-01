@@ -1,0 +1,11 @@
+/* Enter your custom styles here */
+/* Hover effect */
+.customImage:hover {
+    transform: scale(1.05);
+}
+.customImage {
+    padding: var(--sapContent_Padding);
+    border: solid;
+    border-color: var(--sapButton_Emphasized_Background);
+    border-radius: var(--sapElement_BorderCornerRadius);
+}
